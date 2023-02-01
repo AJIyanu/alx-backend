@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+"""Now i have you documented"""
+
+
 import csv
 import math
 from typing import List
-
 
 
 def index_range(page: int, page_size: int) -> tuple:
