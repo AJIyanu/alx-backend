@@ -57,13 +57,11 @@ class Server:
         if len(self.get_page(page + 1, page_size)) == 0:
             dico.update({"next_page": None})
         else:
-            dico.update({"next_page": self.get_page(page + 1, page_size)})
+            dico.update({"next_page": page + 1})
         if page - 1 == 0:
             dico.update({"prev_page": None})
-        elif len(self.get_page(page - 1, page_size)) == 0:
-            dico.update({"prev_page": page - 1})
         else:
-            dico.update({"prev_page": self.get_page(page - 1, page_size)})
+            dico.update({"prev_page": page - 1})
         total = len(self.__dataset) / page_size
         dico.update({"total_pages": math.ceil(total)})
         return dico
