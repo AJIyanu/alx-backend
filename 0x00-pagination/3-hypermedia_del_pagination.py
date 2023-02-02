@@ -88,7 +88,7 @@ class Server:
         while (stindex <= index):
             stindex += page_size
         stindex -= page_size
-        dico.update({"index": stindex})
+        dico.update({"index": index})
         dataset = self.__indexed_dataset
         data = []
         while len(data) < page_size:
