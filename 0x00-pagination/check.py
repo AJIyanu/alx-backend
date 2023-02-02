@@ -16,11 +16,10 @@ except AssertionError:
 
 
 index = 3
-page_size = 2
+page_size = 5
 
 print("Nb items: {}".format(len(server._Server__indexed_dataset)))
 
-"""
 # 1- request first index
 res = server.get_hyper_index(index, page_size)
 print(res)
@@ -37,6 +36,10 @@ print(server.get_hyper_index(index, page_size))
 
 # 5- request again initial next index -> same data page as the request 2-
 print(server.get_hyper_index(res.get('next_index'), page_size))
+
+
 """
 for data in server.indexed_dataset():
     print(data)
+
+"""
