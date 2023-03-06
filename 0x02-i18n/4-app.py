@@ -24,8 +24,9 @@ app.config.from_object(Config)
 def get_locale():
     """set locale en"""
     locale = request.args.get("locale")
-    if locale is in ["en", "fr"]:
-        
+    lang = ["en", "fr"]
+    if locale in lang:
+        return locale        
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
