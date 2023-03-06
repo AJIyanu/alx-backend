@@ -39,6 +39,8 @@ def before_request() -> None:
         login_as = request.args.get('login_as')
         user = get_user(login_as)
         g.user = user
+    else:
+        g.user = {}
 
 
 @babel.localeselector
@@ -56,7 +58,8 @@ def index() -> str:
     """route to home"""
     home_title = _("home_title")
     home_header = _("home_header")
-    username = 
+    username = g.user
+    username = username.get("name")
     return render_template('5-index.html',
                            home_title=home_title,
                            home_header=home_header
