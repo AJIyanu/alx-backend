@@ -29,7 +29,7 @@ users = {
 
 def get_user(user_id: int) -> dict:
     """fetch user for me"""
-    return user.get(user_id)
+    return users.get(user_id)
 
 
 @app.before_request
@@ -62,11 +62,11 @@ def index() -> str:
     username = username.get("name")
     return render_template('5-index.html',
                            home_title=home_title,
-                           home_header=home_header
+                           home_header=home_header,
                            username=username)
 
 
 if __name__ == "__main__":
-    host = "0.0.0.0"
-    port = "5000"
-    app.run(host=host, port=port)
+    HOST = "0.0.0.0"
+    PORT = "5000"
+    app.run(host=HOST, port=PORT)
