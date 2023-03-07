@@ -63,7 +63,7 @@ def index() -> str:
     home_header = _("home_header")
     username = g.user
     username = username.get("name")
-    return render_template('5-index.html',
+    return render_template('6-index.html',
                            home_title=home_title,
                            home_header=home_header,
                            username=username)
