@@ -29,14 +29,14 @@ users = {
 
 def get_user(user_id: int) -> dict:
     """fetch user for me"""
-    return users.get(user_id)
+    return users.get(user_id, {})
 
 
 @app.before_request
 def before_request() -> None:
     """gets user before handling request"""
     if bool(request.args):
-        login_as = request.args.get('login_as')
+        login_as = int(request.args.get('login_as'))
         user = get_user(login_as)
         g.user = user
     else:
