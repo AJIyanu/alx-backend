@@ -83,7 +83,8 @@ def index() -> str:
     username = username.get("name")
     now = datetime.utcnow()
     now = now.astimezone(timezone(get_timezone()))
-    return render_template('7-index.html',
+    now = now.strftime("%b %d, %Y, %I:%M:%S %p")
+    return render_template('index.html',
                            home_title=home_title,
                            home_header=home_header,
                            username=username,
