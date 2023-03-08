@@ -81,7 +81,8 @@ def index() -> str:
     home_header = _("home_header")
     username = g.user
     username = username.get("name")
-    now = datetime.utcnow(timezone(get_timezone()))
+    now = datetime.utcnow()
+    now = now.astimezone(timezone(get_timezone()))
     return render_template('7-index.html',
                            home_title=home_title,
                            home_header=home_header,
