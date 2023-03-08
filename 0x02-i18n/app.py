@@ -2,8 +2,11 @@
 """creates a flask application"""
 
 
+from datetime import datetime
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, gettext as _
+from pytz import timezone
+from pytz.exceptions import UnknownTimeZoneError
 
 
 app = Flask(__name__)
@@ -59,15 +62,16 @@ def get_locale():
 @babel.timezoneselector
 def get_timezone():
     """set local time zone"""
-    timezone = request.args.get("timezone")
-    if timezone is None:
-        timezone = g.user.get("timezone")
-    if timezone is not None:
+    time_zone = request.args.get("timezone")
+    if time_zone is None:
+        time_zone = g.user.get("timezone")
+    if time_zone is not None:
         try:
-            pytz.timezone(timezone)
-            return timezone
+            timezone(time_zone)
+            return time_zone
         except UnknownTimeZoneError:
             return "UTC"
+    return "UTC"
 
 
 @app.route("/")
@@ -77,7 +81,7 @@ def index() -> str:
     home_header = _("home_header")
     username = g.user
     username = username.get("name")
-    now = datetime.utcnow(pytz.timezone(get_timezone()))
+    now = datetime.utcnow(timezone(get_timezone()))
     return render_template('7-index.html',
                            home_title=home_title,
                            home_header=home_header,
