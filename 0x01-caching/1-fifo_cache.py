@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 """ FIFOCache first im first out """
 
-
 from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
     """First im first out"""
-
 
     def put(self, key, item):
         """save item and removes rhe first if full"""
