@@ -18,8 +18,9 @@ Cali: 40,
 Paris: 2,
 }
 
-for (const [place, numer] in Object.entries(hashKeyValue)) {
-    client.HSET("HolbertonSchools", place, numer, print);
+for (const [place, value] in Object.entries(hashKeyValue)) {
+    console.log(place, value);
+    client.HSET("HolbertonSchools", place, value, print);
 }
 
 client.HGETALL("HolbertonSchools", (err, reply) => console.log(reply));
