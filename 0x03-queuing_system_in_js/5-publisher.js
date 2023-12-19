@@ -9,13 +9,14 @@ client.on('error', (err) => {
 
 client.on('connect', () => console.log('Redis client connected to the server'));
 
-function messagePublish(message) {
-    client.publish('holberton school channel', message);
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function publishMessage(message, time) {
     console.log('About to send MESSAGE');
-    await setTimeout(messagePublish(message), time);
+    await delay(time);
+    client.publish('holberton school channel', message);
 }
 
 publishMessage("Holberton Student #1 starts course", 100);
